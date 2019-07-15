@@ -1,39 +1,40 @@
 %body
   .flash-box
   .wrapper
-    .shat-side
-      .side-headder
-        .side-headder__box
-          %p.side-headder__box__user-name HARU
-          %ul.side-headder__box__menu
-            %li.side-headder__box__menu__new-group
+    .chat-side
+      .side-header
+        .side-header__box
+          %p.side-header__box__user-name haru
+          %ul.side-header__box__menu
+            %li.side-header__box__menu__new-group
               = link_to "/group/new" do
                 %i.fa.fa-edit
-            %li.side-headder__box__menu__deit-user
+            %li.side-header__box__menu__edit-user
               = link_to "/group/new" do
                 %i.fa.fa-cog
       .groups
         .group
-          %p first
-          %p おはよう
+          %p.group__group-name first
+          %p.group__latest-message おはよう
     .chat-main
       .main-header
         .main-header__left-box
-          %h2.main-header__left-box__current-group
+          %h2.main-header__left-box__current-group team
           %ul.main-header__left-box__member-list
-            %li.main-header__left-box__member-list__member
-        .main-header__edit-btn EDIT
+            %li.main-header__left-box__member-list__member  Member : tanaka
+        = link_to "/groups/1050/edit" do
+          .main-header__edit-btn Edit
       .messages
         .message
           .message__upper-info
             %p.message__upper-info__talker HARU
             %p.message__upper-info__date 2019/11/11(Mon) 11:11:11
-          %pmessage__text おはよう
+          %p.message__text おはよう
       .form
         .new-message#new_message
           .input-box
             %input.input-box__text#message_content{placeholder: "type a message", type: "text", name: "message[content]"}
-            %label.input-box__image{for: "message_image"}
+            %label.input-box__image{for: "message-image"}
               %i.fa.fa-image
-              %input.input-box__image__file
-          %input.submit-btn{type: "submit", name: "commit", value: "SEND"}
+              %input.input-box__image__file#message-image{type: "file", name: "message[image]"}
+          %input.submit-btn{type: "submit", name: "commit", value: "Send"}
