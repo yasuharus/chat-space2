@@ -135,11 +135,13 @@ a {
   height: 90px;
   background-color: #ddd;
   padding: 20px 40px;
+  position: relative;
 }
 
 .new-message {
   display: flex;
   justify-content: space-between;
+  // position: relative;
   // width: 100%;
 }
 
@@ -149,17 +151,18 @@ a {
    width: 100%;
   &__text[type = "text"] {
     height: 50px;
-    width: 100%;
+    width: calc(100% - 115px);
     padding: 0 40px 0 10px;
     color: #434a54;
     border-style: none;
+    float: left;
   }
   &__image {
     cursor: pointer;
     position: absolute;
     font-size: 1.3rem;
-    top: 10px;
-    right: 10px;
+    top: 30px;
+    right: 165px;
   }
 }
 
