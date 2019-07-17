@@ -1,7 +1,10 @@
-module ApplicationHelper
-  def simple_time(time)
-    time.strftime('%Y/%m/%d(%a) %H:%M:%S')
-  end
+class Message < ApplicationRecord
+  belongs_to :user
+  belongs_to :group
+
+  validates :content, presence: true, unless: :image?
+
+  mount_uploader :image, ImageUploader
 
   # def show_last_message
   #   if (last_message = messages.last).present?
