@@ -23,26 +23,27 @@ $(document).on('turbolinks:load', function() {
                   <p class="chat-group-user__name">${ userName }</p>
                   <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn" data-user-id"${ userId }" data-user-name="${ userName}">削除</a>
                 </div>`
-    $(".js-add-user").append(html);
+    $(".chat-group-user-lower").append(html);
   }
   $("#user-search-field").on("keyup", function(e) {
     e.preventDefault();
     var input = $(this).val();
-    // var group_users = [];
+    var group_users = [];
 
-    // $(".member").each(function() {
-    //   group_users.push($(this).attr("value"));
-    // });
-    // console.log(group_users)
+    $(".member").each(function() {
+     group_users.push($(this).attr("value"));
+    });
+    console.log(group_users)
     $.ajax({
       type: "GET",
       url:  "/users",
       dataType: "json",
       data: { keyword: input,
-              // group_users: group_users
+              group_users: group_users
       }
     })
     .done(function(users) {
+      console.log(users)
       if (users.length !== 0 && input.length !== 0) {
         list.empty();
         users.forEach(function(user) {
