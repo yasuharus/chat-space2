@@ -19,9 +19,6 @@ $(document).on('turbolinks:load', function() {
                     html += `<img src="${ data.image }", class="lower-message__image">`
                   }
 
-
-
-
     return html;
   }
   $("#new_message").on("submit", function(e) {
