@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.where('name LIKE(?)', "#{params[:keyword]}%").where.not(id: member_users)
+    @users = User.where('name LIKE(?)', "#{params[:keyword]}%").where.not(id: params[:group_users])
       respond_to do |format|
         format.html
         format.json
-#  binding.pry
+  # binding.pry
       end
   end
 
@@ -20,19 +20,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def member_users
-    member_users = []
-    member_users << current_user.id
+#  def member_users
+#     member_users = []
+#     # member_users << current_user.id
 
-     if params[:group_users]
-        params[:group_users].map do |user_id|
-        member_users << user_id.to_i
-        end
+#      if params[:group_users]
+#         params[:group_users].map do |user_id|
+#         member_users << user_id.to_i
+#         end
+#      end
 
-        return member_users
+#     return member_users
 
-    end
-  end
+
+#   end
 
 
   def user_params
